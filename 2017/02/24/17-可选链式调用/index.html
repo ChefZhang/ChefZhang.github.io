@@ -1,0 +1,732 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="swift," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="可选链式调用可选链式调用是一种可以在当前值可能为 nil 的可选值上请求和调用属性、方法及下标的方法。如果可选值有 值，那么调用就会成功;如果可选值是 nil ，那么调用将返回 nil 。多个调用可以连接在一起形成一个调用 链，如果其中任何一个节点为 nil ，整个调用链都会失败，即返回 nil 。
+
+注意Swift 的可选链式调用和 Objective-C 中向 nil 发送消息有些相像，但是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="17.可选链式调用">
+<meta property="og:url" content="http://yoursite.com/2017/02/24/17-可选链式调用/index.html">
+<meta property="og:site_name" content="厨子张">
+<meta property="og:description" content="可选链式调用可选链式调用是一种可以在当前值可能为 nil 的可选值上请求和调用属性、方法及下标的方法。如果可选值有 值，那么调用就会成功;如果可选值是 nil ，那么调用将返回 nil 。多个调用可以连接在一起形成一个调用 链，如果其中任何一个节点为 nil ，整个调用链都会失败，即返回 nil 。
+
+注意Swift 的可选链式调用和 Objective-C 中向 nil 发送消息有些相像，但是">
+<meta property="og:updated_time" content="2017-02-24T10:03:39.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="17.可选链式调用">
+<meta name="twitter:description" content="可选链式调用可选链式调用是一种可以在当前值可能为 nil 的可选值上请求和调用属性、方法及下标的方法。如果可选值有 值，那么调用就会成功;如果可选值是 nil ，那么调用将返回 nil 。多个调用可以连接在一起形成一个调用 链，如果其中任何一个节点为 nil ，整个调用链都会失败，即返回 nil 。
+
+注意Swift 的可选链式调用和 Objective-C 中向 nil 发送消息有些相像，但是">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/02/24/17-可选链式调用/"/>
+
+
+
+
+
+  <title> 17.可选链式调用 | 厨子张 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">厨子张</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle"></p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/24/17-可选链式调用/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="ChefZhang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://upload-images.jianshu.io/upload_images/328309-f0893d1d69f1787d.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="厨子张">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="厨子张" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                17.可选链式调用
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-24T18:00:24+08:00">
+                2017-02-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/swift基本语法/" itemprop="url" rel="index">
+                    <span itemprop="name">swift基本语法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/02/24/17-可选链式调用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/24/17-可选链式调用/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="可选链式调用"><a href="#可选链式调用" class="headerlink" title="可选链式调用"></a>可选链式调用</h2><p>可选链式调用是一种可以在当前值可能为 nil 的可选值上请求和调用属性、方法及下标的方法。如果可选值有 值，那么调用就会成功;如果可选值是 nil ，那么调用将返回 nil 。多个调用可以连接在一起形成一个调用 链，如果其中任何一个节点为 nil ，整个调用链都会失败，即返回 nil 。</p>
+<blockquote>
+<p>注意<br>Swift 的可选链式调用和 Objective-C 中向 nil 发送消息有些相像，但是 Swift 的可选链式调用可以应用于 任意类型，并且能检查调用是否成功。</p>
+</blockquote>
+<h3 id="使用可选链式调用代替强制展开"><a href="#使用可选链式调用代替强制展开" class="headerlink" title="使用可选链式调用代替强制展开"></a>使用可选链式调用代替强制展开</h3><p>通过在想调用的属性、方法、或下标的可选值后面放一个问号( <code>?</code> )，可以定义一个可选链。这一点很像在可选 值后面放一个叹号( <code>!</code> )来强制展开它的值。它们的主要区别在于当可选值为空时可选链式调用只会调用失 败，然而强制展开将会触发运行时错误。</p>
+<p>```swift<br> class Person {<br>     var residence: Residence?<br>}<br> class Residence {<br>     var numberOfRooms = 1<br>}<br>let john = Person()</p>
+<p>john.residence = Residence()<br>if let roomCount = john.residence?.numberOfRooms {<br>    print(“John’s residence has (roomCount) room(s).”)<br>} else {<br>    print(“Unable to retrieve the number of rooms.”)<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### 为可选链式调用定义模型类</div><div class="line">通过使用可选链式调用可以调用多层属性、方法和下标。这样可以在复杂的模型中向下访问各种子属性，并且判断能否访问子属性的属性、方法或下标。</div><div class="line"></div><div class="line"></div><div class="line">```swift</div><div class="line">class Person &#123;</div><div class="line">    var residence: Residence?</div><div class="line">&#125;</div><div class="line">class Residence &#123;</div><div class="line">    var rooms = [Room]()</div><div class="line">    var numberOfRooms: Int &#123;</div><div class="line">        return rooms.count</div><div class="line">    &#125;</div><div class="line">    subscript(i: Int) -&gt; Room &#123;</div><div class="line">        get &#123;</div><div class="line">            return rooms[i]</div><div class="line">        &#125;</div><div class="line">        set &#123;</div><div class="line">            rooms[i] = newValue</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    func printNumberOfRooms() &#123;</div><div class="line">        print(&quot;The number of rooms is \(numberOfRooms)&quot;)</div><div class="line">    &#125;</div><div class="line">    var address: Address?</div><div class="line">&#125;</div><div class="line"></div><div class="line">class Room &#123;</div><div class="line">    let name: String</div><div class="line">    init(name: String) &#123; self.name = name &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class Address &#123;</div><div class="line">    var buildingName: String?</div><div class="line">    var buildingNumber: String?</div><div class="line">    var street: String?</div><div class="line">    func buildingIdentifier() -&gt; String? &#123;</div><div class="line">        if buildingName != nil &#123;</div><div class="line">            return buildingName</div><div class="line">        &#125; else if buildingNumber != nil &amp;&amp; street != nil &#123;</div><div class="line">            return &quot;\(buildingNumber) \(street)&quot;</div><div class="line">        &#125; else &#123;</div><div class="line">            return nil</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">let john = Person()</div><div class="line">if let roomCount = john.residence?.numberOfRooms &#123;</div><div class="line">    print(&quot;John&apos;s residence has \(roomCount) room(s).&quot;)</div><div class="line">&#125; else &#123;</div><div class="line">    print(&quot;Unable to retrieve the number of rooms.&quot;)</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">let someAddress = Address()</div><div class="line">someAddress.buildingNumber = &quot;29&quot;</div><div class="line">someAddress.street = &quot;Acacia Road&quot;</div><div class="line">john.residence?.address = someAddress</div><div class="line"></div><div class="line">if let address = john.residence?.address &#123;</div><div class="line">    print(&quot;John&apos;s address&quot;)</div><div class="line">&#125; else &#123;</div><div class="line">    print(&quot;Unable address&quot;)</div><div class="line">&#125;</div><div class="line"></div><div class="line">func createAddress() -&gt; Address &#123;</div><div class="line">    print(&quot;Function was called.&quot;)</div><div class="line">    let someAddress = Address()</div><div class="line">    someAddress.buildingNumber = &quot;29&quot;</div><div class="line">    someAddress.street = &quot;Acacia Road&quot;</div><div class="line">    return someAddress</div><div class="line">&#125;</div><div class="line">john.residence?.address = createAddress()</div><div class="line"></div><div class="line">if let residence = john.residence &#123;</div><div class="line">    print(&quot;has residence&quot;)</div><div class="line">&#125; else &#123;</div><div class="line">    print(&quot;no residence&quot;)</div><div class="line">&#125;</div><div class="line"></div><div class="line">// Unable to retrieve the number of rooms.</div><div class="line">// Unable address</div><div class="line">// no residence</div></pre></td></tr></table></figure></p>
+<h3 id="通过可选链式调用调用方法"><a href="#通过可选链式调用调用方法" class="headerlink" title="通过可选链式调用调用方法"></a>通过可选链式调用调用方法</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">john.residence?.printNumberOfRooms()</div></pre></td></tr></table></figure>
+<h3 id="通过可选链式调用访问下标"><a href="#通过可选链式调用访问下标" class="headerlink" title="通过可选链式调用访问下标"></a>通过可选链式调用访问下标</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> johnsHouse = <span class="type">Residence</span>() johnsHouse.rooms.append(<span class="type">Room</span>(name: <span class="string">"Living Room"</span>)) johnsHouse.rooms.append(<span class="type">Room</span>(name: <span class="string">"Kitchen"</span>)) john.residence = johnsHouse <span class="keyword">if</span> <span class="keyword">let</span> firstRoomName = john.residence?[<span class="number">0</span>].name &#123;     <span class="built_in">print</span>(<span class="string">"The first room name is <span class="subst">\(firstRoomName)</span>."</span>) &#125; <span class="keyword">else</span> &#123;     <span class="built_in">print</span>(<span class="string">"Unable to retrieve the first room name."</span>)&#125;<span class="comment">// 打印 “The first room name is Living Room.”</span></div></pre></td></tr></table></figure>
+<h3 id="连接多层可选链式调用"><a href="#连接多层可选链式调用" class="headerlink" title="连接多层可选链式调用"></a>连接多层可选链式调用</h3><p>可以通过连接多个可选链式调用在更深的模型层级中访问属性、方法以及下标。然而，多层可选链式调用不会增加返回值的可选层级。</p>
+<p>也就是说:</p>
+<ul>
+<li>如果你访问的值不是可选的，可选链式调用将会返回可选值。</li>
+<li>如果你访问的值就是可选的，可选链式调用不会让可选返回值变得“更可选”。</li>
+</ul>
+<p>因此:</p>
+<ul>
+<li>通过可选链式调用访问一个 <code>Int</code> 值，将会返回 <code>Int?</code> ，无论使用了多少层可选链式调用。 </li>
+<li>类似的，通过可选链式调用访问 <code>Int?</code> 值，依旧会返回 <code>Int?</code> 值，并不会返回 <code>Int??</code> 。</li>
+</ul>
+<h3 id="在方法的可选返回值上进行可选链式调用"><a href="#在方法的可选返回值上进行可选链式调用" class="headerlink" title="在方法的可选返回值上进行可选链式调用"></a>在方法的可选返回值上进行可选链式调用</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> <span class="keyword">let</span> beginsWithThe =     john.residence?.address?.buildingIdentifier()?.hasPrefix(<span class="string">"The"</span>) &#123;         <span class="keyword">if</span> beginsWithThe &#123;             <span class="built_in">print</span>(<span class="string">"John's building identifier begins with \"The\"."</span>)         &#125; <span class="keyword">else</span> &#123;             <span class="built_in">print</span>(<span class="string">"John's building identifier does not begin with \"The\"."</span>)	&#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/swift/" rel="tag"># swift</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/24/16-自动引用计数/" rel="next" title="16.自动引用计数">
+                <i class="fa fa-chevron-left"></i> 16.自动引用计数
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/02/24/18-错误处理/" rel="prev" title="18.错误处理">
+                18.错误处理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/02/24/17-可选链式调用/"
+           data-title="17.可选链式调用" data-url="http://yoursite.com/2017/02/24/17-可选链式调用/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://upload-images.jianshu.io/upload_images/328309-f0893d1d69f1787d.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+               alt="ChefZhang" />
+          <p class="site-author-name" itemprop="name">ChefZhang</p>
+          <p class="site-description motion-element" itemprop="description">好像没什么比自由更加重要了</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#可选链式调用"><span class="nav-number">1.</span> <span class="nav-text">可选链式调用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用可选链式调用代替强制展开"><span class="nav-number">1.1.</span> <span class="nav-text">使用可选链式调用代替强制展开</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过可选链式调用调用方法"><span class="nav-number">1.2.</span> <span class="nav-text">通过可选链式调用调用方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过可选链式调用访问下标"><span class="nav-number">1.3.</span> <span class="nav-text">通过可选链式调用访问下标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连接多层可选链式调用"><span class="nav-number">1.4.</span> <span class="nav-text">连接多层可选链式调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在方法的可选返回值上进行可选链式调用"><span class="nav-number">1.5.</span> <span class="nav-text">在方法的可选返回值上进行可选链式调用</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ChefZhang</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"chefzhang"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
