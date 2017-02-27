@@ -316,8 +316,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/swift基本语法/" itemprop="url" rel="index">
-                    <span itemprop="name">swift基本语法</span>
+                  <a href="/categories/swift和OC混编/" itemprop="url" rel="index">
+                    <span itemprop="name">swift和OC混编</span>
                   </a>
                 </span>
 
@@ -364,11 +364,11 @@
         
           
             <p>#OC和Swift混编</p>
-<h2 id="appDelegate从OC转为swift"><a href="#appDelegate从OC转为swift" class="headerlink" title="appDelegate从OC转为swift"></a>appDelegate从OC转为swift</h2><p>在OC中，程序的入口是在<code>main.m</code>中，但是在swift中，你应该找不到这个东西，那么这个入口到底是在哪里呢</p>
+<h2 id="1-appDelegate从OC转为swift"><a href="#1-appDelegate从OC转为swift" class="headerlink" title="1. appDelegate从OC转为swift"></a>1. appDelegate从OC转为swift</h2><p>在OC中，程序的入口是在<code>main.m</code>中，但是在swift中，你应该找不到这个东西，那么这个入口到底是在哪里呢</p>
 <p>如果你仔细看的话，就在AppDelegate.swift中</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"></div><div class="line"><span class="meta">@UIApplicationMain</span> <span class="comment">// 就是这一句啦</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">AppDelegate</span>: <span class="title">UIResponder</span>, <span class="title">UIApplicationDelegate</span> </span>&#123;</div><div class="line">	....</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>其他的配置就不需要改变了</p>
-<h2 id="OC和swift混编"><a href="#OC和swift混编" class="headerlink" title="OC和swift混编"></a>OC和swift混编</h2><ul>
+<h2 id="2-OC和swift混编"><a href="#2-OC和swift混编" class="headerlink" title="2. OC和swift混编"></a>2. OC和swift混编</h2><ul>
 <li><p>1.在OC和swift的混编中，会自动创建桥接文件（你也可以选择不创建，桥接文件用于swift调用OC代码）</p>
 <blockquote>
 <p>n个target就会产生n个桥接文件，比如说<code>契约所</code>一个线上版本，一个测试版本，一个线上的widget，一个测试的widget，就会产生对应的四个桥接文件(其实只要两个桥接文件即可，下面会讲)</p>
@@ -379,7 +379,8 @@
 <pre><code>当然你也可以在Building Settings中自己设置桥接头文件（一般情况下我们会用系统默认生成的），如图1-3所示：
 
 ![](http://upload-images.jianshu.io/upload_images/727625-8a2c170a181c61fd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800)
-</code></pre><h3 id="OC中调用Swift"><a href="#OC中调用Swift" class="headerlink" title="OC中调用Swift"></a>OC中调用Swift</h3><h4 id="配置Build-Setting"><a href="#配置Build-Setting" class="headerlink" title="配置Build Setting"></a>配置Build Setting</h4><h5 id="需要修改，用于Framework"><a href="#需要修改，用于Framework" class="headerlink" title="需要修改，用于Framework"></a>需要修改，用于Framework</h5><p><img src="http://upload-images.jianshu.io/upload_images/328309-2cf59178a8c5707c.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</code></pre><h3 id="2-1-OC中调用Swift"><a href="#2-1-OC中调用Swift" class="headerlink" title="2.1 OC中调用Swift"></a>2.1 OC中调用Swift</h3><h4 id="配置Build-Setting"><a href="#配置Build-Setting" class="headerlink" title="配置Build Setting"></a>配置Build Setting</h4><h5 id="修改Module"><a href="#修改Module" class="headerlink" title="修改Module"></a>修改Module</h5><p>Swift的代码默认是使用module管理的，如果用xib布局的话，swift要是不加载，就会用到这个东西，还有Framework的导入等问题</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/328309-2cf59178a8c5707c.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <h5 id="配置OC中导入Swift的头文件和桥接文件"><a href="#配置OC中导入Swift的头文件和桥接文件" class="headerlink" title="配置OC中导入Swift的头文件和桥接文件"></a>配置OC中导入Swift的头文件和桥接文件</h5><p>因为n个target对应n个桥接文件，所以最好就是都共用同一个桥接文件，将不用的桥接文件删除。在 <code>Build Setting</code> 中 设置 <code>SWIFT_OBJC_INTERFACE_HEADER_NAME</code>，将原来的<code>$(SWIFT_MODULE_NAME)-Swift.h</code> 替换成 <code>$(PROJECT_NAME)-Swift.h</code>（多个target中也是这么配置）<br><img src="http://upload-images.jianshu.io/upload_images/328309-45e1b45243cf140a.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2.jpeg"></p>
 <blockquote>
 <p>xxx-Swift.h就是在OC代码中需要导入的swift头文件</p>
@@ -389,7 +390,7 @@
 <h5 id="swift中检测当前版本"><a href="#swift中检测当前版本" class="headerlink" title="swift中检测当前版本"></a>swift中检测当前版本</h5><p>因为swift中取消了宏定义，所以需要在 <code>flag</code>中设置</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/328309-c9077c59218df614.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="4.jpeg"></p>
 <p>预处理宏就搞定了<br><img src="http://upload-images.jianshu.io/upload_images/328309-e3805602be64db13.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="5.jpeg"></p>
-<h3 id="swift调用OC"><a href="#swift调用OC" class="headerlink" title="swift调用OC"></a>swift调用OC</h3><p>只需要在桥接文件中添加oc的头文件即可，接着就能直接在swift中使用OC的代码了<br><img src="http://upload-images.jianshu.io/upload_images/328309-fa901455946366af.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="6.jpeg"></p>
+<h3 id="2-2-swift调用OC"><a href="#2-2-swift调用OC" class="headerlink" title="2.2 swift调用OC"></a>2.2 swift调用OC</h3><p>只需要在桥接文件中添加oc的头文件即可，接着就能直接在swift中使用OC的代码了<br><img src="http://upload-images.jianshu.io/upload_images/328309-fa901455946366af.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="6.jpeg"></p>
 <p>由于OC和Swift代码不太一样，所以调用方法的时候会出现问题，如果不知道方法的话，可以通过一下操作知道方法的声明。</p>
 <p>如图1所示，OCViewController.h对外提供了一些Public的属性和方法，点击<code>Xcode generated interface</code>后可以看到Objective-C转换为Swift后的Public接口。</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/727625-68c2337d37add2a7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/600" alt=""></p>
@@ -2198,7 +2199,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
