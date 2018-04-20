@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -79,19 +79,16 @@
 
 
 
-<meta name="description" content="析构过程析构器只适用于类类型，当一个类的实例被释放之前，析构器会被立即调用。析构器用关键字deinit 来标示，类似于构造器要用init 来标示。
-析构过程原理Swift 会自动释放不再需要的实例以释放资源。如自动引用计数章节中所讲述，Swift 通过 自动引用计数(ARC) 处理实例的内存管理。通常当你的实例被释放时不需要手动地去清理。但是，当使用自己的资源时，你可能 需要进行一些额外的清理。例">
+<meta name="description" content="析构过程析构器只适用于类类型，当一个类的实例被释放之前，析构器会被立即调用。析构器用关键字deinit 来标示，类似于构造器要用init 来标示。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="15.析构过程">
 <meta property="og:url" content="http://yoursite.com/2017/02/24/15-析构过程/index.html">
 <meta property="og:site_name" content="朱多多">
-<meta property="og:description" content="析构过程析构器只适用于类类型，当一个类的实例被释放之前，析构器会被立即调用。析构器用关键字deinit 来标示，类似于构造器要用init 来标示。
-析构过程原理Swift 会自动释放不再需要的实例以释放资源。如自动引用计数章节中所讲述，Swift 通过 自动引用计数(ARC) 处理实例的内存管理。通常当你的实例被释放时不需要手动地去清理。但是，当使用自己的资源时，你可能 需要进行一些额外的清理。例">
-<meta property="og:updated_time" content="2017-02-24T10:03:30.000Z">
+<meta property="og:description" content="析构过程析构器只适用于类类型，当一个类的实例被释放之前，析构器会被立即调用。析构器用关键字deinit 来标示，类似于构造器要用init 来标示。">
+<meta property="og:updated_time" content="2018-04-20T01:06:36.373Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="15.析构过程">
-<meta name="twitter:description" content="析构过程析构器只适用于类类型，当一个类的实例被释放之前，析构器会被立即调用。析构器用关键字deinit 来标示，类似于构造器要用init 来标示。
-析构过程原理Swift 会自动释放不再需要的实例以释放资源。如自动引用计数章节中所讲述，Swift 通过 自动引用计数(ARC) 处理实例的内存管理。通常当你的实例被释放时不需要手动地去清理。但是，当使用自己的资源时，你可能 需要进行一些额外的清理。例">
+<meta name="twitter:description" content="析构过程析构器只适用于类类型，当一个类的实例被释放之前，析构器会被立即调用。析构器用关键字deinit 来标示，类似于构造器要用init 来标示。">
 
 
 
@@ -99,7 +96,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Gemini',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -188,6 +185,16 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -324,6 +331,7 @@
 
       
         <h2 id="析构过程"><a href="#析构过程" class="headerlink" title="析构过程"></a>析构过程</h2><p>析构器只适用于类类型，当一个类的实例被释放之前，析构器会被立即调用。析构器用关键字<code>deinit</code> 来标示，类似于构造器要用<code>init</code> 来标示。</p>
+<a id="more"></a>
 <h3 id="析构过程原理"><a href="#析构过程原理" class="headerlink" title="析构过程原理"></a>析构过程原理</h3><p>Swift 会自动释放不再需要的实例以释放资源。如自动引用计数章节中所讲述，Swift 通过 <code>自动引用计数(ARC)</code> 处理实例的内存管理。通常当你的实例被释放时不需要手动地去清理。但是，当使用自己的资源时，你可能 需要进行一些额外的清理。例如，如果创建了一个自定义的类来打开一个文件，并写入一些数据，你可能需要在 类实例被释放之前手动去关闭该文件。</p>
 <p>在类的定义中，每个类最多只能有一个析构器，而且析构器不带任何参数，如下所示:</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">deinit</span> &#123;	<span class="comment">// 执行析构过程</span>&#125;</div></pre></td></tr></table></figure>
@@ -541,7 +549,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 
@@ -640,6 +648,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>

@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -95,7 +95,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Gemini',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -185,6 +185,16 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -323,28 +333,15 @@
 
       
         
-          
-            <h2 id="基础部分"><a href="#基础部分" class="headerlink" title="基础部分"></a>基础部分</h2><h3 id="常量和变量"><a href="#常量和变量" class="headerlink" title="常量和变量"></a>常量和变量</h3><h4 id="声明常量和变量"><a href="#声明常量和变量" class="headerlink" title="声明常量和变量"></a>声明常量和变量</h4><p>常量和变量必须在使用前声明，用 let 来声明常量，用 var 来声明变量。var和let声明后，会自动判断类型，可以按住option键点击该变量查看</p>
+          <h2 id="基础部分"><a href="#基础部分" class="headerlink" title="基础部分"></a>基础部分</h2><h3 id="常量和变量"><a href="#常量和变量" class="headerlink" title="常量和变量"></a>常量和变量</h3><h4 id="声明常量和变量"><a href="#声明常量和变量" class="headerlink" title="声明常量和变量"></a>声明常量和变量</h4><p>常量和变量必须在使用前声明，用 let 来声明常量，用 var 来声明变量。var和let声明后，会自动判断类型，可以按住option键点击该变量查看</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 在swift中，换行的话，会默认添加"；"</span></div><div class="line"><span class="keyword">let</span> maximumNumberOfLoginAttempts = <span class="number">10</span></div><div class="line"><span class="keyword">var</span> currentLoginAttempt = <span class="number">0</span></div></pre></td></tr></table></figure>
-<h4 id="类型标注"><a href="#类型标注" class="headerlink" title="类型标注"></a>类型标注</h4><p>当你声明常量或者变量的时候可以加上类型标注(type annotation)，说明常量或者变量中要存储的值的类型。如果要添加类型标注，需要在常量或者变量名后面加上一个冒号和空格，然后加上类型名称。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> message: <span class="type">String</span></div></pre></td></tr></table></figure>
-<h3 id="布尔值"><a href="#布尔值" class="headerlink" title="布尔值"></a>布尔值</h3><p>Swift 有一个基本的布尔(Boolean)类型，叫做 Bool 。布尔值指逻辑上的值，因为它们只能是真或者假。Swift 有两个布尔常量，true 和 false:   在swift的判断语句中，不再是非假即真的这种判断形势，必须是true和false的判断。例如</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> i = <span class="number">1</span></div><div class="line"><span class="keyword">if</span> i &#123;</div><div class="line">    <span class="comment">// 这句就报错了</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="元祖"><a href="#元祖" class="headerlink" title="元祖"></a>元祖</h3><p>元组(tuples)把多个值组合成一个复合值。元组内的值可以是任意类型，并不要求是相同类型。元祖的使用与字典类似</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 这个是一个元祖的定义，元祖是用圆括号抱起来的一组数据；而数组和字典是方括号，千万不要搞错了</span></div><div class="line"><span class="keyword">let</span> http404Error = (<span class="number">404</span>, <span class="string">"Not found"</span>)</div><div class="line"><span class="comment">// http404Error的类型是(Int, String) , 对应的值就是（404, "Not found"）</span></div><div class="line"></div><div class="line"><span class="comment">// 正常的赋值情况就是</span></div><div class="line"><span class="keyword">let</span> (statusCode, statusMessage) = http404Error</div><div class="line"> </div><div class="line"><span class="comment">// 也可以这样， _ 的意思就是该值，没有名称，我并不想用， 所以就会以这种形式去省略掉</span></div><div class="line"><span class="keyword">let</span> (statusCode, <span class="number">_</span>) = http404Error</div></pre></td></tr></table></figure>
-<h3 id="可选类型（swift中比较重要的一个特点）"><a href="#可选类型（swift中比较重要的一个特点）" class="headerlink" title="可选类型（swift中比较重要的一个特点）"></a>可选类型（swift中比较重要的一个特点）</h3><p>使用可选类型(optionals)来处理值可能缺失的情况。可选类型表示: </p>
-<p>• 有值，等于 x</p>
-<p>或者<br>• 没有值</p>
-<blockquote>
-<p>注意：在OC中，nil是表示“缺少一个合法的对象”，对于结构体、枚举类型或者基本数据类型不起作用。然而，Swift 的可选类型可以让 你暗示任意类型的值缺失，并不需要一个特殊值。 </p>
-</blockquote>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> possibleNumber = <span class="string">"123"</span></div><div class="line"><span class="keyword">let</span> convertedNumber = <span class="type">Int</span>(possibleNumber)</div><div class="line"><span class="comment">// convertedNumber被推断为  Int?  ， 因为字符串可能可以转化为Int，也可能转化不成功</span></div></pre></td></tr></table></figure>
-<h4 id="if-语句以及强制解析"><a href="#if-语句以及强制解析" class="headerlink" title="if 语句以及强制解析"></a>if 语句以及强制解析</h4><p>你可以使用 if 语句和 nil 比较来判断一个可选值是否包含值。你可以使用“相等”(==)或“不 等”( != )来执行比较。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> convertedNumber != <span class="literal">nil</span> &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"convertedNumber contains some integer value."</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">// 输出 "convertedNumber contains some integer value."</span></div></pre></td></tr></table></figure>
-<h4 id="可选绑定"><a href="#可选绑定" class="headerlink" title="可选绑定"></a>可选绑定</h4><p>使用可选绑定(optional binding)来判断可选类型是否包含值，如果包含就把值赋给一个临时常量或者变量。可选绑定可以用在 if 和 while 语句中，这条语句不仅可以用来判断可选类型中是否有值，同时可以将 可选类型中的值赋给一个常量或者变量。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> <span class="keyword">let</span> constantName = someOptional &#123;</div><div class="line">    statements</div><div class="line">&#125;</div><div class="line"><span class="comment">// constantName 和 someOptional可以是相同的变量名称</span></div><div class="line"> </div><div class="line"><span class="comment">// 例如，这里右边的name是可选类型，左右的name就是已经解包的类型</span></div><div class="line"><span class="keyword">if</span> <span class="keyword">let</span> name = name &#123;</div><div class="line">    <span class="comment">//</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/02/24/1.基础部分/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -633,7 +630,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 
@@ -732,6 +729,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
 
   
 

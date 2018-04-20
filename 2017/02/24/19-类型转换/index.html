@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -80,21 +80,18 @@
 
 
 <meta name="description" content="类型装换类型转换在 Swift 中使用 is 和 as 操作符实现。这两个操作符提供了一种简单达意的方式去检查值的类型或者转换它的类型。
-你也可以用它来检查一个类型是否实现了某个协议，就像在检验协议的一致性 (页 0)部分讲述的一样。
-定义一个类层次作为例子123456789101112131415161718192021222324252627282930class MediaItem &amp;#12">
+你也可以用它来检查一个类型是否实现了某个协议，就像在检验协议的一致性 (页 0)部分讲述的一样。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="19.类型转换">
 <meta property="og:url" content="http://yoursite.com/2017/02/24/19-类型转换/index.html">
 <meta property="og:site_name" content="朱多多">
 <meta property="og:description" content="类型装换类型转换在 Swift 中使用 is 和 as 操作符实现。这两个操作符提供了一种简单达意的方式去检查值的类型或者转换它的类型。
-你也可以用它来检查一个类型是否实现了某个协议，就像在检验协议的一致性 (页 0)部分讲述的一样。
-定义一个类层次作为例子123456789101112131415161718192021222324252627282930class MediaItem &amp;#12">
-<meta property="og:updated_time" content="2017-02-24T10:03:46.000Z">
+你也可以用它来检查一个类型是否实现了某个协议，就像在检验协议的一致性 (页 0)部分讲述的一样。">
+<meta property="og:updated_time" content="2018-04-20T01:06:55.368Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="19.类型转换">
 <meta name="twitter:description" content="类型装换类型转换在 Swift 中使用 is 和 as 操作符实现。这两个操作符提供了一种简单达意的方式去检查值的类型或者转换它的类型。
-你也可以用它来检查一个类型是否实现了某个协议，就像在检验协议的一致性 (页 0)部分讲述的一样。
-定义一个类层次作为例子123456789101112131415161718192021222324252627282930class MediaItem &amp;#12">
+你也可以用它来检查一个类型是否实现了某个协议，就像在检验协议的一致性 (页 0)部分讲述的一样。">
 
 
 
@@ -102,7 +99,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Gemini',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -191,6 +188,16 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -328,6 +335,7 @@
       
         <h2 id="类型装换"><a href="#类型装换" class="headerlink" title="类型装换"></a>类型装换</h2><p>类型转换在 Swift 中使用 <code>is</code> 和 <code>as</code> 操作符实现。这两个操作符提供了一种简单达意的方式去检查值的类型或者转换它的类型。</p>
 <p>你也可以用它来检查一个类型是否实现了某个协议，就像在检验协议的一致性 (页 0)部分讲述的一样。</p>
+<a id="more"></a>
 <h3 id="定义一个类层次作为例子"><a href="#定义一个类层次作为例子" class="headerlink" title="定义一个类层次作为例子"></a>定义一个类层次作为例子</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MediaItem</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> name: <span class="type">String</span></div><div class="line">    <span class="keyword">init</span>(name: <span class="type">String</span>) &#123;</div><div class="line">        <span class="keyword">self</span>.name = name</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Movie</span>: <span class="title">MediaItem</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> director: <span class="type">String</span></div><div class="line">    <span class="keyword">init</span>(name: <span class="type">String</span>, director: <span class="type">String</span>) &#123;</div><div class="line">        <span class="keyword">self</span>.director = director</div><div class="line">        <span class="comment">// You have to initialize all property before you call super.init in any init method</span></div><div class="line">        <span class="keyword">super</span>.<span class="keyword">init</span>(name: name)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Song</span>: <span class="title">MediaItem</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> artist: <span class="type">String</span></div><div class="line">    <span class="keyword">init</span>(name: <span class="type">String</span>, artist: <span class="type">String</span>) &#123;</div><div class="line">        <span class="keyword">self</span>.artist = artist</div><div class="line">        <span class="keyword">super</span>.<span class="keyword">init</span>(name: name)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> library = [</div><div class="line">    <span class="type">Movie</span>(name: <span class="string">"Casablanca"</span>, director: <span class="string">"Michael Curtiz"</span>),</div><div class="line">    <span class="type">Song</span>(name: <span class="string">"Blue Suede Shoes"</span>, artist: <span class="string">"Elvis Presley"</span>),</div><div class="line">    <span class="type">Movie</span>(name: <span class="string">"Citizen Kane"</span>, director: <span class="string">"Orson Welles"</span>),</div><div class="line">    <span class="type">Song</span>(name: <span class="string">"The One And Only"</span>, artist: <span class="string">"Chesney Hawkes"</span>),</div><div class="line">    <span class="type">Song</span>(name: <span class="string">"Never Gonna Give You Up"</span>, artist: <span class="string">"Rick Astley"</span>)</div><div class="line">]</div></pre></td></tr></table></figure>
 <p>最后一个代码段创建了一个数组常量 <code>library</code>，包含两个 <code>Movie</code> 实例和三个 <code>Song</code> 实例。<code>library</code> 的类型 是在它被初始化时根据它数组中所包含的内容推断来的。Swift 的类型检测器能够推断出 <code>Movie</code> 和 <code>Song</code> 有共 同的父类 <code>MediaItem</code> ，所以它推断出 <code>[MediaItem]</code> 类作为 <code>library</code> 的类型</p>
 <p>在幕后 <code>library</code> 里存储的媒体项依然是 <code>Movie</code> 和 <code>Song</code> 类型的。但是，若你迭代它，依次取出的实例会是 <code>MediaItem</code> 类型的，而不是 <code>Movie</code> 和 <code>Song</code> 类型。为了让它们作为原本的类型工作，你需要检查它们的类型或者向下转换它们到其它类型，就像下面描述的一样。</p>
@@ -558,7 +566,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 
@@ -657,6 +665,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>

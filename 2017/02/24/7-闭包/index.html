@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -80,21 +80,18 @@
 
 
 <meta name="description" content="闭包闭包表达式闭包表达式语法闭包表达式语法有如下的一般形式:
-1&amp;#123; (parameters) -&amp;gt; returnType in     statements&amp;#125;
-闭包表达式参数 可以是 in-out 参数，但不能设定默认值。也可以使用具名的可变参数(译者注:但是如果可变 参数不放在参数列表的最后一位的话，调用闭包的时时编译器将报错。可参考这里)。元组也可以作为参数和返">
+1&amp;#123; (parameters) -&amp;gt; returnType in     statements&amp;#125;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="7.闭包">
 <meta property="og:url" content="http://yoursite.com/2017/02/24/7-闭包/index.html">
 <meta property="og:site_name" content="朱多多">
 <meta property="og:description" content="闭包闭包表达式闭包表达式语法闭包表达式语法有如下的一般形式:
-1&amp;#123; (parameters) -&amp;gt; returnType in     statements&amp;#125;
-闭包表达式参数 可以是 in-out 参数，但不能设定默认值。也可以使用具名的可变参数(译者注:但是如果可变 参数不放在参数列表的最后一位的话，调用闭包的时时编译器将报错。可参考这里)。元组也可以作为参数和返">
-<meta property="og:updated_time" content="2017-02-24T10:02:38.000Z">
+1&amp;#123; (parameters) -&amp;gt; returnType in     statements&amp;#125;">
+<meta property="og:updated_time" content="2018-04-20T01:05:54.597Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="7.闭包">
 <meta name="twitter:description" content="闭包闭包表达式闭包表达式语法闭包表达式语法有如下的一般形式:
-1&amp;#123; (parameters) -&amp;gt; returnType in     statements&amp;#125;
-闭包表达式参数 可以是 in-out 参数，但不能设定默认值。也可以使用具名的可变参数(译者注:但是如果可变 参数不放在参数列表的最后一位的话，调用闭包的时时编译器将报错。可参考这里)。元组也可以作为参数和返">
+1&amp;#123; (parameters) -&amp;gt; returnType in     statements&amp;#125;">
 
 
 
@@ -102,7 +99,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Gemini',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -191,6 +188,16 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -328,6 +335,7 @@
       
         <h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><h3 id="闭包表达式"><a href="#闭包表达式" class="headerlink" title="闭包表达式"></a>闭包表达式</h3><h4 id="闭包表达式语法"><a href="#闭包表达式语法" class="headerlink" title="闭包表达式语法"></a>闭包表达式语法</h4><p>闭包表达式语法有如下的一般形式:</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123; (parameters) -&gt; returnType <span class="keyword">in</span>     statements&#125;</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>闭包表达式参数 可以是 in-out 参数，但不能设定默认值。也可以使用具名的可变参数(译者注:但是如果可变 参数不放在参数列表的最后一位的话，调用闭包的时时编译器将报错。可参考这里)。元组也可以作为参数和返 回值</p>
 <p>下面的例子展示了之前 backward(<em>:</em>:) 函数对应的闭包表达式版本的代码:</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"> reversedNames = names.sorted(by: &#123; (s1: <span class="type">String</span>, s2: <span class="type">String</span>) -&gt; <span class="type">Bool</span> <span class="keyword">in</span>     <span class="keyword">return</span> s1 &gt; s2&#125;)</div></pre></td></tr></table></figure>
@@ -600,7 +608,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 
@@ -699,6 +707,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>

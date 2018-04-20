@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -79,22 +79,16 @@
 
 
 
-<meta name="description" content="属性属性将值跟特定的类、结构或枚举关联。存储属性存储常量或变量作为实例的一部分，而计算属性计算(不是存储)一个值。计算属性可以用于类、结构体和枚举，存储属性只能用于类和结构体。
-存储属性简单来说，一个存储属性就是存储在特定类或结构体实例里的一个常量或变量。存储属性可以是变量存储属性(用关键字 var 定义)，也可以是常量存储属性(用关键字 let 定义)。
-12struct FixedLength">
+<meta name="description" content="属性属性将值跟特定的类、结构或枚举关联。存储属性存储常量或变量作为实例的一部分，而计算属性计算(不是存储)一个值。计算属性可以用于类、结构体和枚举，存储属性只能用于类和结构体。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="10.属性">
 <meta property="og:url" content="http://yoursite.com/2017/02/24/10-属性/index.html">
 <meta property="og:site_name" content="朱多多">
-<meta property="og:description" content="属性属性将值跟特定的类、结构或枚举关联。存储属性存储常量或变量作为实例的一部分，而计算属性计算(不是存储)一个值。计算属性可以用于类、结构体和枚举，存储属性只能用于类和结构体。
-存储属性简单来说，一个存储属性就是存储在特定类或结构体实例里的一个常量或变量。存储属性可以是变量存储属性(用关键字 var 定义)，也可以是常量存储属性(用关键字 let 定义)。
-12struct FixedLength">
-<meta property="og:updated_time" content="2017-02-24T10:03:11.000Z">
+<meta property="og:description" content="属性属性将值跟特定的类、结构或枚举关联。存储属性存储常量或变量作为实例的一部分，而计算属性计算(不是存储)一个值。计算属性可以用于类、结构体和枚举，存储属性只能用于类和结构体。">
+<meta property="og:updated_time" content="2018-04-20T01:06:12.437Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="10.属性">
-<meta name="twitter:description" content="属性属性将值跟特定的类、结构或枚举关联。存储属性存储常量或变量作为实例的一部分，而计算属性计算(不是存储)一个值。计算属性可以用于类、结构体和枚举，存储属性只能用于类和结构体。
-存储属性简单来说，一个存储属性就是存储在特定类或结构体实例里的一个常量或变量。存储属性可以是变量存储属性(用关键字 var 定义)，也可以是常量存储属性(用关键字 let 定义)。
-12struct FixedLength">
+<meta name="twitter:description" content="属性属性将值跟特定的类、结构或枚举关联。存储属性存储常量或变量作为实例的一部分，而计算属性计算(不是存储)一个值。计算属性可以用于类、结构体和枚举，存储属性只能用于类和结构体。">
 
 
 
@@ -102,7 +96,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Gemini',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -191,6 +185,16 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -327,6 +331,7 @@
 
       
         <h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><p>属性将值跟特定的类、结构或枚举关联。存储属性存储常量或变量作为实例的一部分，而计算属性计算(不是存储)一个值。计算属性可以用于类、结构体和枚举，存储属性只能用于类和结构体。</p>
+<a id="more"></a>
 <h3 id="存储属性"><a href="#存储属性" class="headerlink" title="存储属性"></a>存储属性</h3><p>简单来说，一个存储属性就是存储在<code>特定类</code>或<code>结构体</code>实例里的一个常量或变量。存储属性可以是变量存储属性(用关键字 var 定义)，也可以是常量存储属性(用关键字 let 定义)。</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">FixedLengthRange</span> </span>&#123;     <span class="keyword">var</span> firstValue: <span class="type">Int</span>     <span class="keyword">let</span> length: <span class="type">Int</span>&#125;<span class="keyword">var</span> rangeOfThreeItems = <span class="type">FixedLengthRange</span>(firstValue: <span class="number">0</span>, length: <span class="number">3</span>) </div><div class="line"><span class="comment">// 该区间表示整数0，1，2</span>rangeOfThreeItems.firstValue = <span class="number">6</span><span class="comment">// 该区间现在表示整数6，7，8</span></div></pre></td></tr></table></figure>
 <h4 id="常量结构体的存储属性"><a href="#常量结构体的存储属性" class="headerlink" title="常量结构体的存储属性"></a>常量结构体的存储属性</h4><p>如果创建了一个结构体的实例并将其赋值给一个常量，则无法修改该实例的任何属性，即使有属性被声明为变量也不行:</p>
@@ -594,7 +599,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 
@@ -693,6 +698,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>

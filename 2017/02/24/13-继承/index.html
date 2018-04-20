@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -79,22 +79,16 @@
 
 
 
-<meta name="description" content="继承在 Swift 中，类可以调用和访问超类的方法，属性和下标，并且可以重写这些方法，属性和下标来优化或修改它 们的行为。Swift 会检查你的重写定义在超类中是否有匹配的定义，以此确保你的重写行为是正确的。
-定义一个基类不继承于其它类的类，称之为基类。
-12class Vehicle &amp;#123;     var currentSpeed = 0.0     var description:">
+<meta name="description" content="继承在 Swift 中，类可以调用和访问超类的方法，属性和下标，并且可以重写这些方法，属性和下标来优化或修改它 们的行为。Swift 会检查你的重写定义在超类中是否有匹配的定义，以此确保你的重写行为是正确的。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="13.继承">
 <meta property="og:url" content="http://yoursite.com/2017/02/24/13-继承/index.html">
 <meta property="og:site_name" content="朱多多">
-<meta property="og:description" content="继承在 Swift 中，类可以调用和访问超类的方法，属性和下标，并且可以重写这些方法，属性和下标来优化或修改它 们的行为。Swift 会检查你的重写定义在超类中是否有匹配的定义，以此确保你的重写行为是正确的。
-定义一个基类不继承于其它类的类，称之为基类。
-12class Vehicle &amp;#123;     var currentSpeed = 0.0     var description:">
-<meta property="og:updated_time" content="2017-02-24T10:03:23.000Z">
+<meta property="og:description" content="继承在 Swift 中，类可以调用和访问超类的方法，属性和下标，并且可以重写这些方法，属性和下标来优化或修改它 们的行为。Swift 会检查你的重写定义在超类中是否有匹配的定义，以此确保你的重写行为是正确的。">
+<meta property="og:updated_time" content="2018-04-20T01:06:27.253Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="13.继承">
-<meta name="twitter:description" content="继承在 Swift 中，类可以调用和访问超类的方法，属性和下标，并且可以重写这些方法，属性和下标来优化或修改它 们的行为。Swift 会检查你的重写定义在超类中是否有匹配的定义，以此确保你的重写行为是正确的。
-定义一个基类不继承于其它类的类，称之为基类。
-12class Vehicle &amp;#123;     var currentSpeed = 0.0     var description:">
+<meta name="twitter:description" content="继承在 Swift 中，类可以调用和访问超类的方法，属性和下标，并且可以重写这些方法，属性和下标来优化或修改它 们的行为。Swift 会检查你的重写定义在超类中是否有匹配的定义，以此确保你的重写行为是正确的。">
 
 
 
@@ -102,7 +96,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Gemini',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -191,6 +185,16 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -327,6 +331,7 @@
 
       
         <h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>在 Swift 中，类可以调用和访问超类的方法，属性和下标，并且可以重写这些方法，属性和下标来优化或修改它 们的行为。Swift 会检查你的重写定义在超类中是否有匹配的定义，以此确保你的重写行为是正确的。</p>
+<a id="more"></a>
 <h3 id="定义一个基类"><a href="#定义一个基类" class="headerlink" title="定义一个基类"></a>定义一个基类</h3><p>不继承于其它类的类，称之为基类。</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Vehicle</span> </span>&#123;     <span class="keyword">var</span> currentSpeed = <span class="number">0.0</span>     <span class="keyword">var</span> description: <span class="type">String</span> &#123;         <span class="keyword">return</span> <span class="string">"traveling at <span class="subst">\(currentSpeed)</span> miles per hour"</span>     &#125;<span class="function"><span class="keyword">func</span> <span class="title">makeNoise</span><span class="params">()</span></span> &#123;	<span class="comment">// 什么也不做-因为车辆不一定会有噪音</span>	&#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="子类生成"><a href="#子类生成" class="headerlink" title="子类生成"></a>子类生成</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SomeClass</span>: <span class="title">SomeSuperclass</span> </span>&#123; </div><div class="line"><span class="comment">// 这里是子类的定义</span>&#125;</div></pre></td></tr></table></figure>
@@ -566,7 +571,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 
@@ -665,6 +670,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>

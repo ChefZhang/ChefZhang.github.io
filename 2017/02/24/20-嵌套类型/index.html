@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -79,19 +79,16 @@
 
 
 
-<meta name="description" content="嵌套类型要在一个类型中嵌套另一个类型，将嵌套类型的定义写在其外部类型的 {} 内，而且可以根据需要定义多级嵌套。
-嵌套类型实践12345678910111213141516171819202122232425262728293031323334353637383940struct BlackjackCard &amp;#123;    // 嵌套的 Suit 枚举     enum Suit: Chara">
+<meta name="description" content="嵌套类型要在一个类型中嵌套另一个类型，将嵌套类型的定义写在其外部类型的 {} 内，而且可以根据需要定义多级嵌套。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="20.嵌套类型">
 <meta property="og:url" content="http://yoursite.com/2017/02/24/20-嵌套类型/index.html">
 <meta property="og:site_name" content="朱多多">
-<meta property="og:description" content="嵌套类型要在一个类型中嵌套另一个类型，将嵌套类型的定义写在其外部类型的 {} 内，而且可以根据需要定义多级嵌套。
-嵌套类型实践12345678910111213141516171819202122232425262728293031323334353637383940struct BlackjackCard &amp;#123;    // 嵌套的 Suit 枚举     enum Suit: Chara">
-<meta property="og:updated_time" content="2017-02-24T10:03:50.000Z">
+<meta property="og:description" content="嵌套类型要在一个类型中嵌套另一个类型，将嵌套类型的定义写在其外部类型的 {} 内，而且可以根据需要定义多级嵌套。">
+<meta property="og:updated_time" content="2018-04-20T01:06:59.348Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="20.嵌套类型">
-<meta name="twitter:description" content="嵌套类型要在一个类型中嵌套另一个类型，将嵌套类型的定义写在其外部类型的 {} 内，而且可以根据需要定义多级嵌套。
-嵌套类型实践12345678910111213141516171819202122232425262728293031323334353637383940struct BlackjackCard &amp;#123;    // 嵌套的 Suit 枚举     enum Suit: Chara">
+<meta name="twitter:description" content="嵌套类型要在一个类型中嵌套另一个类型，将嵌套类型的定义写在其外部类型的 {} 内，而且可以根据需要定义多级嵌套。">
 
 
 
@@ -99,7 +96,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Gemini',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -188,6 +185,16 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -324,6 +331,7 @@
 
       
         <h2 id="嵌套类型"><a href="#嵌套类型" class="headerlink" title="嵌套类型"></a>嵌套类型</h2><p>要在一个类型中嵌套另一个类型，将嵌套类型的定义写在其外部类型的 <code>{}</code> 内，而且可以根据需要定义多级嵌套。</p>
+<a id="more"></a>
 <h3 id="嵌套类型实践"><a href="#嵌套类型实践" class="headerlink" title="嵌套类型实践"></a>嵌套类型实践</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">BlackjackCard</span> </span>&#123;</div><div class="line">    <span class="comment">// 嵌套的 Suit 枚举 </span></div><div class="line">    <span class="class"><span class="keyword">enum</span> <span class="title">Suit</span>: <span class="title">Character</span> </span>&#123;</div><div class="line">    <span class="keyword">case</span> <span class="type">Spades</span> = <span class="string">"?"</span>, <span class="type">Hearts</span> = <span class="string">"."</span>, <span class="type">Diamonds</span> = <span class="string">"&gt;"</span>, <span class="type">Clubs</span> = <span class="string">"!"</span></div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">// 嵌套的 Rank 枚举 </span></div><div class="line">    <span class="class"><span class="keyword">enum</span> <span class="title">Rank</span>: <span class="title">Int</span> </span>&#123;</div><div class="line">        <span class="keyword">case</span> <span class="type">Two</span> = <span class="number">2</span>, <span class="type">Three</span>, <span class="type">Four</span>, <span class="type">Five</span>, <span class="type">Six</span>, <span class="type">Seven</span>, <span class="type">Eight</span>, <span class="type">Nine</span>, <span class="type">Ten</span></div><div class="line">        <span class="keyword">case</span> <span class="type">Jack</span>, <span class="type">Queen</span>, <span class="type">King</span>, <span class="type">Ace</span></div><div class="line">        <span class="class"><span class="keyword">struct</span> <span class="title">Values</span> </span>&#123;</div><div class="line">            <span class="keyword">let</span> first: <span class="type">Int</span>, second: <span class="type">Int</span>?</div><div class="line">    &#125;</div><div class="line">        <span class="keyword">var</span> values: <span class="type">Values</span> &#123;</div><div class="line">            <span class="keyword">switch</span> <span class="keyword">self</span> &#123;</div><div class="line">            <span class="keyword">case</span> .<span class="type">Ace</span>:</div><div class="line">                <span class="keyword">return</span> <span class="type">Values</span>(first: <span class="number">1</span>, second: <span class="number">11</span>)</div><div class="line">            <span class="keyword">case</span> .<span class="type">Jack</span>, .<span class="type">Queen</span>, .<span class="type">King</span>:</div><div class="line">                <span class="keyword">return</span> <span class="type">Values</span>(first: <span class="number">10</span>, second: <span class="literal">nil</span>)</div><div class="line">            <span class="keyword">default</span>:</div><div class="line">                <span class="keyword">return</span> <span class="type">Values</span>(first: <span class="keyword">self</span>.rawValue, second: <span class="literal">nil</span>)</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">// BlackjackCard 的属性和方法 </span></div><div class="line">    <span class="keyword">let</span> rank: <span class="type">Rank</span>, suit: <span class="type">Suit</span></div><div class="line">    <span class="keyword">var</span> description: <span class="type">String</span> &#123;</div><div class="line">        <span class="keyword">var</span> output = <span class="string">"suit is <span class="subst">\(suit.rawValue)</span>,"</span></div><div class="line">        output += <span class="string">" value is <span class="subst">\(rank.values.first)</span>"</span></div><div class="line">        <span class="keyword">if</span> <span class="keyword">let</span> second = rank.values.second &#123;</div><div class="line">            output += <span class="string">" or <span class="subst">\(second)</span>"</span></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> output</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> theAceOfSpades = <span class="type">BlackjackCard</span>(rank: .<span class="type">Ace</span>, suit: .<span class="type">Spades</span>)</div><div class="line"><span class="built_in">print</span>(<span class="string">"theAceOfSpades: <span class="subst">\(theAceOfSpades.description)</span>"</span>)</div><div class="line"><span class="comment">// theAceOfSpades: suit is ?, value is 1 or 11</span></div></pre></td></tr></table></figure>
 <h3 id="引用嵌套类型"><a href="#引用嵌套类型" class="headerlink" title="引用嵌套类型"></a>引用嵌套类型</h3><p>在外部引用嵌套类型时，在嵌套类型的类型名前加上其外部类型的类型名作为前缀:</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> heartsSymbol = <span class="type">BlackjackCard</span>.<span class="type">Suit</span>.<span class="type">Hearts</span>.rawValue </div><div class="line"><span class="comment">// 红心符号为 “?”</span></div></pre></td></tr></table></figure>
@@ -539,7 +547,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 
@@ -638,6 +646,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>

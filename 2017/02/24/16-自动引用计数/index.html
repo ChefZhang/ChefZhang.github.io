@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -80,21 +80,18 @@
 
 
 <meta name="description" content="自动引用计数自动引用计数的工作机制当你每次创建一个类的新的实例的时候，ARC 会分配一块内存来储存该实例信息。内存中会包含实例的类型信 息，以及这个实例所有相关的存储型属性的值。
-此外，当实例不再被使用时，ARC 释放实例所占用的内存，并让释放的内存能挪作他用。这确保了不再被使用的 实例，不会一直占用内存空间。
-类实例之间的循环强引用12345678910111213141516171819202">
+此外，当实例不再被使用时，ARC 释放实例所占用的内存，并让释放的内存能挪作他用。这确保了不再被使用的 实例，不会一直占用内存空间。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="16.自动引用计数">
 <meta property="og:url" content="http://yoursite.com/2017/02/24/16-自动引用计数/index.html">
 <meta property="og:site_name" content="朱多多">
 <meta property="og:description" content="自动引用计数自动引用计数的工作机制当你每次创建一个类的新的实例的时候，ARC 会分配一块内存来储存该实例信息。内存中会包含实例的类型信 息，以及这个实例所有相关的存储型属性的值。
-此外，当实例不再被使用时，ARC 释放实例所占用的内存，并让释放的内存能挪作他用。这确保了不再被使用的 实例，不会一直占用内存空间。
-类实例之间的循环强引用12345678910111213141516171819202">
-<meta property="og:updated_time" content="2017-02-24T10:03:34.000Z">
+此外，当实例不再被使用时，ARC 释放实例所占用的内存，并让释放的内存能挪作他用。这确保了不再被使用的 实例，不会一直占用内存空间。">
+<meta property="og:updated_time" content="2018-04-20T01:06:42.509Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="16.自动引用计数">
 <meta name="twitter:description" content="自动引用计数自动引用计数的工作机制当你每次创建一个类的新的实例的时候，ARC 会分配一块内存来储存该实例信息。内存中会包含实例的类型信 息，以及这个实例所有相关的存储型属性的值。
-此外，当实例不再被使用时，ARC 释放实例所占用的内存，并让释放的内存能挪作他用。这确保了不再被使用的 实例，不会一直占用内存空间。
-类实例之间的循环强引用12345678910111213141516171819202">
+此外，当实例不再被使用时，ARC 释放实例所占用的内存，并让释放的内存能挪作他用。这确保了不再被使用的 实例，不会一直占用内存空间。">
 
 
 
@@ -102,7 +99,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Gemini',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -191,6 +188,16 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -328,6 +335,7 @@
       
         <h2 id="自动引用计数"><a href="#自动引用计数" class="headerlink" title="自动引用计数"></a>自动引用计数</h2><h3 id="自动引用计数的工作机制"><a href="#自动引用计数的工作机制" class="headerlink" title="自动引用计数的工作机制"></a>自动引用计数的工作机制</h3><p>当你每次创建一个类的新的实例的时候，ARC 会分配一块内存来储存该实例信息。内存中会包含实例的类型信 息，以及这个实例所有相关的存储型属性的值。</p>
 <p>此外，当实例不再被使用时，ARC 释放实例所占用的内存，并让释放的内存能挪作他用。这确保了不再被使用的 实例，不会一直占用内存空间。</p>
+<a id="more"></a>
 <h3 id="类实例之间的循环强引用"><a href="#类实例之间的循环强引用" class="headerlink" title="类实例之间的循环强引用"></a>类实例之间的循环强引用</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</div><div class="line">    <span class="keyword">let</span> name: <span class="type">String</span></div><div class="line">    <span class="keyword">init</span>(name: <span class="type">String</span>) &#123; <span class="keyword">self</span>.name = name &#125;</div><div class="line">    <span class="keyword">var</span> apartment: <span class="type">Apartment</span>?</div><div class="line">    <span class="keyword">deinit</span> &#123; <span class="built_in">print</span>(<span class="string">"<span class="subst">\(name)</span> is being deinitialized"</span>) &#125;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Apartment</span> </span>&#123;</div><div class="line">    <span class="keyword">let</span> unit: <span class="type">String</span></div><div class="line">    <span class="keyword">init</span>(unit: <span class="type">String</span>) &#123; <span class="keyword">self</span>.unit = unit &#125;</div><div class="line">    <span class="keyword">var</span> tenant: <span class="type">Person</span>?</div><div class="line">    <span class="keyword">deinit</span> &#123; <span class="built_in">print</span>(<span class="string">"Apartment <span class="subst">\(unit)</span> is being deinitialized"</span>) &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> john: <span class="type">Person</span>?</div><div class="line"><span class="keyword">var</span> unit4A: <span class="type">Apartment</span>?</div><div class="line"></div><div class="line">john = <span class="type">Person</span>(name: <span class="string">"John Appleseed"</span>)</div><div class="line">unit4A = <span class="type">Apartment</span>(unit: <span class="string">"4A"</span>)</div><div class="line"></div><div class="line">john!.apartment = unit4A</div><div class="line">unit4A!.tenant = john</div><div class="line"></div><div class="line">john = <span class="literal">nil</span></div><div class="line">unit4A = <span class="literal">nil</span></div></pre></td></tr></table></figure>
 <h3 id="解决实例之间的循环强引用"><a href="#解决实例之间的循环强引用" class="headerlink" title="解决实例之间的循环强引用"></a>解决实例之间的循环强引用</h3><p>Swift 提供了两种办法用来解决你在使用类的属性时所遇到的循环强引用问题:弱引用(weak reference)和无 主引用(unowned reference)。</p>
 <p>弱引用和无主引用允许循环引用中的一个实例引用而另外一个实例不保持强引用。这样实例能够互相引用而不产生循环强引用。</p>
@@ -584,7 +592,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 
@@ -683,6 +691,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>

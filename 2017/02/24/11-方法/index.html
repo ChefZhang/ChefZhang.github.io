@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -79,22 +79,16 @@
 
 
 
-<meta name="description" content="方法方法是与某些特定类型相关联的函数。类、结构体、枚举都可以定义实例方法;实例方法为给定类型的实例封装 了具体的任务与功能。类、结构体、枚举也可以定义类型方法;类型方法与类型本身相关联。类型方法与 Object ive-C 中的类方法(class methods)相似。
-实例方法 (Instance Methods)实例方法的语法与函数完全一致
-实例方法要写在它所属的类型的前后大括号之间。实例方法">
+<meta name="description" content="方法方法是与某些特定类型相关联的函数。类、结构体、枚举都可以定义实例方法;实例方法为给定类型的实例封装 了具体的任务与功能。类、结构体、枚举也可以定义类型方法;类型方法与类型本身相关联。类型方法与 Object ive-C 中的类方法(class methods)相似。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="11.方法">
 <meta property="og:url" content="http://yoursite.com/2017/02/24/11-方法/index.html">
 <meta property="og:site_name" content="朱多多">
-<meta property="og:description" content="方法方法是与某些特定类型相关联的函数。类、结构体、枚举都可以定义实例方法;实例方法为给定类型的实例封装 了具体的任务与功能。类、结构体、枚举也可以定义类型方法;类型方法与类型本身相关联。类型方法与 Object ive-C 中的类方法(class methods)相似。
-实例方法 (Instance Methods)实例方法的语法与函数完全一致
-实例方法要写在它所属的类型的前后大括号之间。实例方法">
-<meta property="og:updated_time" content="2017-02-24T10:03:14.000Z">
+<meta property="og:description" content="方法方法是与某些特定类型相关联的函数。类、结构体、枚举都可以定义实例方法;实例方法为给定类型的实例封装 了具体的任务与功能。类、结构体、枚举也可以定义类型方法;类型方法与类型本身相关联。类型方法与 Object ive-C 中的类方法(class methods)相似。">
+<meta property="og:updated_time" content="2018-04-20T01:06:17.575Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="11.方法">
-<meta name="twitter:description" content="方法方法是与某些特定类型相关联的函数。类、结构体、枚举都可以定义实例方法;实例方法为给定类型的实例封装 了具体的任务与功能。类、结构体、枚举也可以定义类型方法;类型方法与类型本身相关联。类型方法与 Object ive-C 中的类方法(class methods)相似。
-实例方法 (Instance Methods)实例方法的语法与函数完全一致
-实例方法要写在它所属的类型的前后大括号之间。实例方法">
+<meta name="twitter:description" content="方法方法是与某些特定类型相关联的函数。类、结构体、枚举都可以定义实例方法;实例方法为给定类型的实例封装 了具体的任务与功能。类、结构体、枚举也可以定义类型方法;类型方法与类型本身相关联。类型方法与 Object ive-C 中的类方法(class methods)相似。">
 
 
 
@@ -102,7 +96,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Gemini',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -191,6 +185,16 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -327,6 +331,7 @@
 
       
         <h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>方法是与某些特定类型相关联的函数。<br>类、结构体、枚举都可以定义实例方法;实例方法为给定类型的实例封装 了具体的任务与功能。<br>类、结构体、枚举也可以定义类型方法;类型方法与类型本身相关联。类型方法与 Object ive-C 中的类方法(class methods)相似。</p>
+<a id="more"></a>
 <h3 id="实例方法-Instance-Methods"><a href="#实例方法-Instance-Methods" class="headerlink" title="实例方法 (Instance Methods)"></a>实例方法 (Instance Methods)</h3><p>实例方法的语法与函数完全一致</p>
 <p>实例方法要写在它所属的类型的前后大括号之间。实例方法能够<code>隐式访问</code>（不写<code>self.</code>）它所属类型的所有的其他实例方法和属性。实例方法只能被它所属的类的某个特定实例调用。实例方法不能脱离于现存的实例而被调用。</p>
 <p>下面的例子，定义一个很简单的 Counter 类， Counter 能被用来对一个动作发生的次数进行计数:</p>
@@ -574,7 +579,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 
@@ -673,6 +678,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
