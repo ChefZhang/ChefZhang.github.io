@@ -1,4 +1,342 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="Author chefZhang"><title>pipenv使用-python包管理工具 · 乱里库码</title><meta name="description" content="pipenv简介pipenv是python官方推荐的包管理工具，方便管理python的虚拟环境和库，集成了virtualenv，pyenv和pip三者的功能于一身。能够自动为项目创建和管理虚拟环境，从Pipfile文件中添加或者删除包，同事生成Pipfile.lock文件锁定安装包的版本和依赖信息，"><meta name="keywords" content="iOS,Hexo,HTML,CSS"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h3 title=""><a href="/">乱里库码</a></h3><div class="description"><p>生活杂记</p></div></div></div><ul class="social-links"><li><a href="http://github.com/ChefZhang"><i class="fa fa-github"></i></a></li></ul><div class="footer"><a target="_blank" href="/"><span>Theme by </span></a><a href="https://www.caicai.me"> CaiCai </a><span>&</span><a href="https://github.com/Ben02/hexo-theme-Anatole"> Ben</a><div class="by_farbox"><a href="https://hexo.io/zh-cn/" target="_blank">Proudly published with Hexo&#65281;</a></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li><li><a href="/about">关于</a></li></div><div class="information"><div class="back_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)"> </a></li></div><div class="avatar"><img src="http://upload-images.jianshu.io/upload_images/328309-f0893d1d69f1787d.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>pipenv使用-python包管理工具</a></h3></div><div class="post-content"><h2 id="pipenv简介"><a href="#pipenv简介" class="headerlink" title="pipenv简介"></a>pipenv简介</h2><p>pipenv是python官方推荐的包管理工具，方便管理python的虚拟环境和库，集成了virtualenv，pyenv和pip三者的功能于一身。能够自动为项目创建和管理虚拟环境，从<code>Pipfile</code>文件中添加或者删除包，同事生成<code>Pipfile.lock</code>文件锁定安装包的版本和依赖信息，避免构建错误。</p>
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="pipenv简介pipenv是python官方推荐的包管理工具，方便管理python的虚拟环境和库，集成了virtualenv，pyenv和pip三者的功能于一身。能够自动为项目创建和管理虚拟环境，从Pipfile文件中添加或者删除包，同事生成Pipfile.lock文件锁定安装包的版本和依赖信息，避免构建错误。
+为什么要用pipenv呢？或者说原来的三个工具不是也直接用么？
+直接用virtual">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pipenv使用-python包管理工具">
+<meta property="og:url" content="http://yoursite.com/2018/10/10/pipenv使用-python包管理工具/index.html">
+<meta property="og:site_name" content="乱里库码">
+<meta property="og:description" content="pipenv简介pipenv是python官方推荐的包管理工具，方便管理python的虚拟环境和库，集成了virtualenv，pyenv和pip三者的功能于一身。能够自动为项目创建和管理虚拟环境，从Pipfile文件中添加或者删除包，同事生成Pipfile.lock文件锁定安装包的版本和依赖信息，避免构建错误。
+为什么要用pipenv呢？或者说原来的三个工具不是也直接用么？
+直接用virtual">
+<meta property="og:updated_time" content="2018-10-10T09:46:21.276Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="pipenv使用-python包管理工具">
+<meta name="twitter:description" content="pipenv简介pipenv是python官方推荐的包管理工具，方便管理python的虚拟环境和库，集成了virtualenv，pyenv和pip三者的功能于一身。能够自动为项目创建和管理虚拟环境，从Pipfile文件中添加或者删除包，同事生成Pipfile.lock文件锁定安装包的版本和依赖信息，避免构建错误。
+为什么要用pipenv呢？或者说原来的三个工具不是也直接用么？
+直接用virtual">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/10/10/pipenv使用-python包管理工具/"/>
+
+
+
+
+
+  <title>pipenv使用-python包管理工具 | 乱里库码</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">乱里库码</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/10/pipenv使用-python包管理工具/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ChefZhang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="乱里库码">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">pipenv使用-python包管理工具</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-10T15:59:13+08:00">
+                2018-10-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="pipenv简介"><a href="#pipenv简介" class="headerlink" title="pipenv简介"></a>pipenv简介</h2><p>pipenv是python官方推荐的包管理工具，方便管理python的虚拟环境和库，集成了virtualenv，pyenv和pip三者的功能于一身。能够自动为项目创建和管理虚拟环境，从<code>Pipfile</code>文件中添加或者删除包，同事生成<code>Pipfile.lock</code>文件锁定安装包的版本和依赖信息，避免构建错误。</p>
 <p>为什么要用pipenv呢？或者说原来的三个工具不是也直接用么？</p>
 <p>直接用virtualenv可能会导致的问题：</p>
 <ul>
@@ -51,6 +389,7 @@
 <p>退出</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">exit</div></pre></td></tr></table></figure>
 <h3 id="查看虚拟环境目录"><a href="#查看虚拟环境目录" class="headerlink" title="查看虚拟环境目录"></a>查看虚拟环境目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ pipenv --venv</div><div class="line">/Users/xxx/.local/share/virtualenvs/test_pipenv-UtK8HKY2</div></pre></td></tr></table></figure>
+<h3 id="查看项目根目录："><a href="#查看项目根目录：" class="headerlink" title="查看项目根目录："></a>查看项目根目录：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ pipenv --where</div></pre></td></tr></table></figure>
 <h3 id="检查软件包的完整性"><a href="#检查软件包的完整性" class="headerlink" title="检查软件包的完整性"></a>检查软件包的完整性</h3><p>你是否担心已安装的软件包有没有安全漏洞？没关系，pipenv 可以帮你检查，运行下面的命令：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$  pipenv check</div><div class="line">Checking PEP 508 requirements…</div><div class="line">Passed!</div><div class="line">Checking installed package safety…</div><div class="line">All good!</div></pre></td></tr></table></figure>
 <p>上面的命令根据 Pipfile 里的 PEP 508 标记检查安全漏洞。</p>
@@ -61,13 +400,385 @@
 <p>例如写一个 .env 文件：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">echo &quot;FOO=hello foo&quot; &gt; .env</div></pre></td></tr></table></figure>
 <p>之后 pipenv shell 进入虚拟环境，echo $FOO 就能看环境变量的值 hello foo 已经设置好了。</p>
-</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2018-10-10</span><i class="fa fa-tag"></i><a class="tag" href="/categories/python/" title="python">python </a></div></div></div></div><div class="share"><div class="evernote"><a class="fa fa-bookmark" href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank"></a></div><div class="weibo"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="twitter"><a class="fa fa-twitter" href="http://twitter.com/home?status=,http://yoursite.com/2018/10/10/pipenv使用-python包管理工具/,乱里库码,pipenv使用-python包管理工具,;"></a></div></div><div class="pagination"><ul class="clearfix"><li class="next pagbuttons"><a class="btn" role="navigation" href="/2018/09/20/UITableView偏移/" title="UITableView偏移">下一篇</a></li></ul></div><a id="comments"></a><div id="vcomments" style="margin:0 30px;"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//cdn.jsdelivr.net/gh/xcss/valine@v1.1.7/dist/Valine.min.js?v=undefined"></script><script>var valine = new Valine({
-  el:'#vcomments',
-  notify:false || false, 
-  verify:false|| false, 
-  app_id:'cCvO1WkU4CxdrgVlL1xVKUGy-gzGzoHsz',
-  app_key:'LVDXkJkVmzeGKLMytUjKz6Fm',
-  placeholder:'Just go go',
-  path: window.location.pathname,
-  avatar:'mm'
-})</script></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/20/UITableView偏移/" rel="next" title="UITableView偏移">
+                <i class="fa fa-chevron-left"></i> UITableView偏移
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/30/iOS逆向（一）/" rel="prev" title="iOS逆向（一）">
+                iOS逆向（一） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">ChefZhang</p>
+              <p class="site-description motion-element" itemprop="description">好像没什么比自由更加重要了</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#pipenv简介"><span class="nav-number">1.</span> <span class="nav-text">pipenv简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装pipenv"><span class="nav-number">2.</span> <span class="nav-text">安装pipenv</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用pip安装"><span class="nav-number">2.1.</span> <span class="nav-text">使用pip安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用brew安装"><span class="nav-number">2.2.</span> <span class="nav-text">使用brew安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#shell自动补齐"><span class="nav-number">2.3.</span> <span class="nav-text">shell自动补齐</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用pipenv"><span class="nav-number">3.</span> <span class="nav-text">使用pipenv</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建环境"><span class="nav-number">3.1.</span> <span class="nav-text">创建环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装第三方库"><span class="nav-number">3.2.</span> <span class="nav-text">安装第三方库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装开发环境下的包"><span class="nav-number">3.2.1.</span> <span class="nav-text">安装开发环境下的包</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#卸载第三方包"><span class="nav-number">3.3.</span> <span class="nav-text">卸载第三方包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更新安装包"><span class="nav-number">3.4.</span> <span class="nav-text">更新安装包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进入-退出环境"><span class="nav-number">3.5.</span> <span class="nav-text">进入|退出环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看虚拟环境目录"><span class="nav-number">3.6.</span> <span class="nav-text">查看虚拟环境目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看项目根目录："><span class="nav-number">3.7.</span> <span class="nav-text">查看项目根目录：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检查软件包的完整性"><span class="nav-number">3.8.</span> <span class="nav-text">检查软件包的完整性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看依赖树"><span class="nav-number">3.9.</span> <span class="nav-text">查看依赖树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#锁定版本"><span class="nav-number">3.10.</span> <span class="nav-text">锁定版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#环境变量管理"><span class="nav-number">3.11.</span> <span class="nav-text">环境变量管理</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ChefZhang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
